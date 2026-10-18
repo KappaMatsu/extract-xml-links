@@ -1,54 +1,141 @@
-XML Link Extractor
+<div align="center">🔗 XML Link Extractor
 
-A small Python command-line tool that extracts URLs from <loc> tags in an XML file and saves them to a text file.
-Features
+⚡ Extract. Clean. Organize.
 
-    Extracts URLs from <loc> tags.
-    Skips empty <loc> tags.
-    Removes duplicate links while preserving their original order.
-    Supports file paths containing spaces.
-    Requires no external dependencies.
+A lightweight Python CLI tool to extract clean URLs from XML files.
 
-Requirements
+Turn messy XML sitemaps into a clean, deduplicated list of links — in seconds.
 
-    Python 3.8 or later.
+<p>
+  <img src="https://img.shields.io/badge/Python-3.8%2B-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python 3.8+"/>
+  <img src="https://img.shields.io/badge/Dependencies-None-2EA44F?style=for-the-badge" alt="No dependencies"/>
+  <img src="https://img.shields.io/badge/License-MIT-8A2BE2?style=for-the-badge" alt="MIT License"/>
+</p><p>
+  <a href="#-features">Features</a> •
+  <a href="#-installation">Installation</a> •
+  <a href="#-usage">Usage</a> •
+  <a href="#-example">Example</a> •
+  <a href="#-contributing">Contributing</a>
+</p></div>---
 
-Check that Python is installed:
-bash
+✨ Features
+
+- 🔍 Automatic extraction — extracts URLs from XML "<loc>" tags.
+- 🧹 Duplicate removal — keeps unique URLs while preserving their original order.
+- 🛡️ Empty tag handling — automatically skips empty "<loc>" elements.
+- 📂 Flexible file paths — supports paths containing spaces.
+- ⚡ Zero dependencies — uses Python's standard library.
+- 🐍 Simple CLI — straightforward commands, no complicated setup.
+
+🚀 Installation
+
+Prerequisites
+
+- Python 3.8 or later
+
+Check your Python version:
 
 python --version
 
-Depending on your system, you may need to use python3 instead of python.
-Setup
+Get the project
 
-Save the script as extraire_liens.py. No additional packages are required.
-Usage
-bash
+git clone https://github.com/KappaMatsu/extract-xml-links.git
+cd extract-xml-links
+
+No additional packages are required. You're ready to go!
+
+💻 Usage
+
+Run the script with an XML input file and a destination text file:
 
 python extraire_liens.py -xml "input.xml" -sortie "links.txt"
 
-    -xml: Path to the XML input file.
-    -sortie: Path to the output text file.
+Argument| Description
+"-xml"| Path to the input XML file
+"-sortie"| Path to the output text file
 
-Example with paths containing spaces:
-bash
+Example with spaces in file paths:
 
 python extraire_liens.py -xml "my files/site map.xml" -sortie "my files/extracted links.txt"
 
-The output file will contain one link per line:
-text
+«💡 Tip: On some Linux or macOS systems, you may need to use "python3" instead of "python".»
 
-https://www.files.com/docs/networking-and-performance/ip-addresses/dedicated-ip-addresseshttps://www.files.com/docs/networking-and-performance/ip-addresses/hardcoded-or-static-ip-addresseshttps://www.files.com/docs/networking-and-performance/ip-addresses/bring-your-own-ip-byoip
+📋 Example
 
-Example XML File
-xml
+Input — "sitemap.xml"
 
-<url>  <loc>https://example.com/page-1</loc></url><url>  <loc>https://example.com/page-2</loc></url><url>  <loc></loc></url>
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+        <loc>https://example.com/</loc>
+    </url>
+    <url>
+        <loc>https://example.com/about</loc>
+    </url>
+    <url>
+        <loc>https://example.com/</loc>
+    </url>
+    <url>
+        <loc></loc>
+    </url>
+</urlset>
 
-The empty <loc> tag is skipped.
-Help
+Command
 
-To display the available options:
-bash
+python extraire_liens.py -xml "sitemap.xml" -sortie "links.txt"
+
+Output — "links.txt"
+
+https://example.com/
+https://example.com/about
+
+The result: clean URLs, no empty entries, no duplicates. 🎯
+
+🛠️ How It Works
+
+       📄 XML File
+           |
+           v
+    🔍 Parse <loc> Tags
+           |
+           v
+    🧹 Skip Empty Values
+           |
+           v
+    ♻️ Remove Duplicates
+       (Keep Order)
+           |
+           v
+       📋 links.txt
+
+🆘 Help
+
+Display the available command-line options:
 
 python extraire_liens.py --help
+
+🤝 Contributing
+
+Contributions, suggestions and bug reports are welcome!
+
+1. Fork this repository.
+2. Create a feature branch: "git checkout -b feat/my-feature"
+3. Commit your changes: "git commit -m "Add my feature""
+4. Push your branch: "git push origin feat/my-feature"
+5. Open a Pull Request.
+
+Found a bug or have an idea? Feel free to open an "issue" (https://github.com/KappaMatsu/extract-xml-links/issues).
+
+📜 License
+
+This project is distributed under the MIT License. See the "LICENSE" (LICENSE) file for details.
+
+---
+
+<div align="center">⭐ If you find this project useful, consider giving it a star!
+
+Made with 🐍 Python
+
+<a href="https://github.com/KappaMatsu/extract-xml-links">KappaMatsu / extract-xml-links</a>
+
+</div>
